@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view>
+
+<!--首页-->
+<view hidden="{{currentTab!==0}}">
+<!--首页轮播图-->
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <navigator url="{{item.link}}" hover-class="navigator-hover">
+          <image src="{{item.url}}" class="slide-image" width="355" height="150" />
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!--新闻-->
+<view hidden="{{currentTab!==1}}">
+  新闻
+</view>
+<!--活动-->
+<view hidden="{{currentTab!==2}}">
+  活动
+  </view>
+  <!--更多-->
+  <view hidden="{{currentTab!==3}}">
+    更多
+  </view>
